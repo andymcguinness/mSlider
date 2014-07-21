@@ -3,7 +3,7 @@ $(document).ready(function(){
         Creating an instance && using our beautiful slider
     **********************************************************************************/
     /* Creating our slider instance */
-    var testSlider = new MSlider;
+    var testSlider = new mSlider;
 
     /* Click event handler area */
     // The nav

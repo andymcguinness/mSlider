@@ -1,11 +1,11 @@
 /**********************************************************************************
-    Class name: MSlider
+    Class name: mSlider
     Description: Creates a slider class with methods to slide left, slide right, toggle the
                          nav, set a setInterval, clear that setInterval, manage the slider function-
                          ality, and manage the play/pause functionality.
 
 **********************************************************************************/
-function MSlider() {
+function mSlider() {
     /* Initializing the properties */
     this.$target;
     this.$active;
@@ -13,10 +13,10 @@ function MSlider() {
     this.tmp;
     this.slideInterval = this.startTimer();
 }
-MSlider.prototype.clearTimer = function() {
+mSlider.prototype.clearTimer = function() {
     this.slideInterval = window.clearInterval(this.slideInterval);
 };
-MSlider.prototype.mRun = function(event, autoPlay) { // the brains of this thing; both args sorta optional, tests to deal with various cases ensue
+mSlider.prototype.mRun = function(event, autoPlay) { // the brains of this thing; both args sorta optional, tests to deal with various cases ensue
     /* Event handling */
     if (event.target) { event.preventDefault ? event.preventDefault() : event.returnValue = false; } // if there is an event, preventing it, now with 100% more IE support!
 
@@ -57,7 +57,7 @@ MSlider.prototype.mRun = function(event, autoPlay) { // the brains of this thing
     /* Managing our nav */
     this.$item.parents('.nav').length == 1 ? this.$item.parent('li').addClass('active').siblings('li').removeClass('active') : this.switchNav(this.$target); // if we clicked on a nav item, just do some jQuery, otherwise call the method
 };
-MSlider.prototype.playPause = function (event) {
+mSlider.prototype.playPause = function (event) {
     /* Event prevention */
     event.preventDefault ? event.preventDefault() : event.returnValue = false;
 
@@ -69,7 +69,7 @@ MSlider.prototype.playPause = function (event) {
         $('.pause').removeClass('on').siblings('.play').addClass('on');
     }
 };
-MSlider.prototype.slideLeft = function($toItem, $fromItem) {
+mSlider.prototype.slideLeft = function($toItem, $fromItem) {
     $fromItem.animate({ left: '100%' }, 500, function(){ $(this).removeClass('active'); }); // Animate the active guy to the right, then, when done, remove the active class
     if ($toItem.hasClass('lazy')) { // At the same time, snap the target item offscreen to the left (can't assume it's already there), then animate it in; once that's done, add the active class                   
         $toItem.css('background-image', 'url(' + $toItem.attr('data-original') + ')').css('left','-100%').animate({ left: '0' }, 500, function(){ $(this).addClass('active').removeClass('lazy'); }); // extra lifting if it's being lazy loaded
@@ -77,7 +77,7 @@ MSlider.prototype.slideLeft = function($toItem, $fromItem) {
         $toItem.css('left','-100%').animate({ left: '0' }, 500, function(){ $(this).addClass('active'); });
     }
 };
-MSlider.prototype.slideRight = function($toItem, $fromItem) {
+mSlider.prototype.slideRight = function($toItem, $fromItem) {
     $fromItem.animate({ left: '-100%' }, 500, function(){ $(this).removeClass('active').css('left', '100%'); }); // Animate the active dudebro to the left offscreen, then once that's done, remove the active class & reset it off the screen to the right
     if ($toItem.hasClass('lazy')){ // At the same time, animate the target to the left to be in the screen, then once that's done, add the class of active, which seals the pact
         $toItem.css('background-image', 'url(' + $toItem.attr('data-original') + ')').animate({ left: '0' }, 500, function(){ $(this).addClass('active').removeClass('lazy'); }); // extra lifting if it's being lazy loaded
@@ -85,9 +85,9 @@ MSlider.prototype.slideRight = function($toItem, $fromItem) {
         $toItem.animate({ left: '0' }, 500, function(){ $(this).addClass('active'); });
     }
 };
-MSlider.prototype.startTimer = function() {
+mSlider.prototype.startTimer = function() {
     return window.setInterval(this.mRun.bind(this), 7000, {}, true); // scoping correctly is always necessary; also, passing an empty object in place of the event object
 };
-MSlider.prototype.switchNav = function($toItem) { // slide the nav along to the proper selection
+mSlider.prototype.switchNav = function($toItem) { // slide the nav along to the proper selection
     $('.nav').find('.' + $toItem.attr('id')).addClass('active').siblings('li').removeClass('active');
 };

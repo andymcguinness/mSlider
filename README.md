@@ -1,5 +1,5 @@
-# MSlider Documentation
-This documentation should help explain how to use & abuse the MSlider. Mostly this is a note to self.
+# mSlider Documentation
+This documentation should help explain how to use & abuse the mSlider. Mostly this is a note to self.
 
 ## 0 -- Basics
 The slider is based around sliding absolutely-positioned divs around. It uses jQuery's .animate(), which is not the most efficient method, but it allowed me access to a callback which I sorely needed at the time. Given time & need, I might rewrite this to use Modernizr, CSS3 transitions, and some alternate method for callbacks.
@@ -37,7 +37,7 @@ Next, we have the slider itself (not the nav):
         </div>
     </div>
 
-That's the basic shell of the slider. You can have (n) slides, which is pretty cool, though personally, I think 1,042 might be a bit much. Just be aware that if you go over 4 slides, you will have to change some stuff in the JavaScript, particularly in the logic for the left/right sliding. It's commented, but you shouldn't have any problem figuring out what you have to do. In the future, I'll redo the constructor to take a numSlides argument or something like that, so to create a new slider, you would call "var testSlider = new MSlider('10');" or somesuch.
+That's the basic shell of the slider. You can have (n) slides, which is pretty cool, though personally, I think 1,042 might be a bit much. Just be aware that if you go over 4 slides, you will have to change some stuff in the JavaScript, particularly in the logic for the left/right sliding. It's commented, but you shouldn't have any problem figuring out what you have to do. In the future, I'll redo the constructor to take a numSlides argument or something like that, so to create a new slider, you would call "var testSlider = new mSlider('10');" or somesuch.
 
 ###### The Nav
 Finally, we have the slider's nav. The structure of that looks like:
@@ -72,7 +72,7 @@ Note that the hrefs here relate back to the slide ID's. This is purposeful, and 
 ## The JS
 Now that you've got your HTML there, you can start implementing the JS. Crazy! How to define a new slider:
 
-    var testSlider = new MSlider;
+    var testSlider = new mSlider;
 
 And you have yourself a brand new slider! Unfortunately, click event handling doesn't come built-in yet, so here's some click events you have to add:
 
