@@ -1,10 +1,10 @@
 # mSlider Documentation
 This documentation should help explain how to use & abuse the mSlider. Mostly this is a note to self.
 
-## 0 -- Basics
+## The Basics
 The slider is based around sliding absolutely-positioned divs around. It uses jQuery's .animate(), which is not the most efficient method, but it allowed me access to a callback which I sorely needed at the time. Given time & need, I might rewrite this to use Modernizr, CSS3 transitions, and some alternate method for callbacks.
 
-## 1 -- HTML
+## The HTML
 The HTML required for this slider is slightly heavy, but that's because the slider doesn't provide it for you. If you set up the slider correctly, everything should fire. You can then tweak and change the normal/active/hover/etc. styles as you need.
 
 ###### The Wrapper
@@ -80,3 +80,6 @@ Pretty simple, right? That's all there is to it! If you'd like the extra feature
 
 ## The CSS
 The CSS provides extremely basic styling -- truly nothing exciting. It DOES, however, provide extremely necessary positioning, as well as some active/hover states. These can/will be added onto/tweaked, but this is enough to make the slider completely functional.
+
+## A Demo
+If you pull this repo down locally and open it with MAMP/WAMP/whatever, you can see a very bare demo. The index.html file contains an instance of it, so you can see what the html looks like all put together. 
