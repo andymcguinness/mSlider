@@ -4,7 +4,7 @@
     This CSS provides very minimal styles, but allows the slider to function properly.
 **********************************************************************************/
 /* Reset */
-#mSlider, #mSlider * {
+.mSlider, .mSlider * {
     display: block;
     float: left;
     width: 100%;
@@ -20,20 +20,20 @@
     box-sizing:border-box;
     -webkit-font-smoothing: antialiased;
 }
-#mSlider {
+.mSlider {
     overflow-x: hidden;
 }
-#mSlider br { /* So breaks don't show */
+.mSlider br { /* So breaks don't show */
     float: none;
     width: auto;
     display: inline;
 }
 
 /* The Slider */
-#mSlider .slider {
+.mSlider .slider {
     height: 840px;
 }
-#mSlider .slider .slider-nav {
+.mSlider .slider .slider-nav {
     width: 960px;
     display: block;
     float: none;
@@ -41,7 +41,7 @@
     height: 840px;
     position: relative;
 }
-#mSlider .slider .slider-nav a {
+.mSlider .slider .slider-nav a {
     height: auto;
     width: auto;
     padding: 5px 10px;
@@ -58,24 +58,24 @@
     opacity: 0.8;
     filter: alpha(opacity=80);
 }
-#mSlider .slider .slider-nav .left-arrow {
+.mSlider .slider .slider-nav .left-arrow {
     position: absolute;
     top: 55%;
     left: 0;
     z-index: 1;
 }
-#mSlider .slider .slider-nav .right-arrow {
+.mSlider .slider .slider-nav .right-arrow {
     position: absolute;
     top: 55%;
     right: 0;
     z-index: 1;
 }
-#mSlider .slider .slider-nav a:hover {
+.mSlider .slider .slider-nav a:hover {
     background: #444;
     opacity: 1;
     filter: alpha(opacity=100);
 }
-#mSlider .slider .slider-nav .play-pause {
+.mSlider .slider .slider-nav .play-pause {
     position: absolute;
     bottom: 120px;
     left: 0;
@@ -85,12 +85,12 @@
     background: transparent;
     font-size: 30px;
 }
-#mSlider .slider .slider-nav .play-pause:hover {
+.mSlider .slider .slider-nav .play-pause:hover {
     background: transparent;
     opacity: 0.8;
 }
-#mSlider .slider .slider-nav .play-pause .play,
-#mSlider .slider .slider-nav .play-pause .pause {
+.mSlider .slider .slider-nav .play-pause .play,
+.mSlider .slider .slider-nav .play-pause .pause {
     height: 0;
     width: 0;
     opacity: 0;
@@ -103,17 +103,17 @@
             transition: height .3s ease,
                         opacity .3s ease;
 }
-#mSlider .slider .slider-nav .play-pause .play { left: 5px; }
-#mSlider .slider .slider-nav .play-pause .pause { font-size: 20px; }
-#mSlider .slider .slider-nav .play-pause .play.on,
-#mSlider .slider .slider-nav .play-pause .pause.on {
+.mSlider .slider .slider-nav .play-pause .play { left: 5px; }
+.mSlider .slider .slider-nav .play-pause .pause { font-size: 20px; }
+.mSlider .slider .slider-nav .play-pause .play.on,
+.mSlider .slider .slider-nav .play-pause .pause.on {
     min-height: 30px;
     opacity: 0.75;
     width: auto;
     z-index: 10000;
 }
 
-#mSlider .slider .slide {
+.mSlider .slider .slide {
     height: 840px;
     width: 960px;
     position: absolute;
@@ -121,15 +121,15 @@
     left: 100%;
     overflow: hidden;
 }
-#mSlider .slider .slide.active { left: 0; }
+.mSlider .slider .slide.active { left: 0; }
 
 /* The Nav */
-#mSlider .nav {
+.mSlider .nav {
     background: rgb(0,0,0);
     background: rgba(0,0,0,0.5);
     margin-top:-86px;
 }
-#mSlider .nav .nav-wrapper {
+.mSlider .nav .nav-wrapper {
     position: relative;
     float: none;
     width: 960px;
@@ -137,7 +137,7 @@
     display: block;
     background: #000;
 }
-#mSlider .nav .nav-wrapper li {
+.mSlider .nav .nav-wrapper li {
   position: relative;
     width: 240px;
     height: 86px;
@@ -146,7 +146,7 @@
     -moz-transition: opacity: .3s ease;
             transition: opacity .3s ease;
 }
-#mSlider .nav .nav-wrapper li a {
+.mSlider .nav .nav-wrapper li a {
     position: absolute;
     top: 0;
     width: 240px;

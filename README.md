@@ -10,9 +10,9 @@ The HTML required for this slider is slightly heavy, but that's because the slid
 ###### The Wrapper
 First, you have the wrapper of the slider itself:
 
-    <div id="mSlider">
+    <div class="mSlider" id="your-id">
 
-This is the wrapper that contains all of the guts of the slider, so it's very important you include it!
+This is the wrapper that contains all of the guts of the slider, so it's very important you include it! Make the id whatever you want, but you must remember it -- you need it to instantiate the slider later.
 
 ###### The Slider
 Next, we have the slider itself (not the nav):
@@ -37,7 +37,7 @@ Next, we have the slider itself (not the nav):
         </div>
     </div>
 
-That's the basic shell of the slider. You can have (n) slides, which is pretty cool, though personally, I think 1,042 might be a bit much. Just be aware that if you go over 4 slides, you will have to change some stuff in the JavaScript, particularly in the logic for the left/right sliding. It's commented, but you shouldn't have any problem figuring out what you have to do. In the future, I'll redo the constructor to take a numSlides argument or something like that, so to create a new slider, you would call "var testSlider = new mSlider('10');" or somesuch.
+That's the basic shell of the slider. You can have (n) slides, which is pretty cool, though personally, I think 1,042 might be a bit much. When you instantiate the slider, you can tell it how many slides you have. 4 is the default, so feel free not to put a number if it's just 4.
 
 ###### The Nav
 Finally, we have the slider's nav. The structure of that looks like:
@@ -67,32 +67,16 @@ Finally, we have the slider's nav. The structure of that looks like:
 
 Why do we have a mystery wrapped in a puzzle wrapped in an enigma? Well, we have the wrapper div that's probably full-width, then we have the nav itself which sits inside, and can float around however you desire. Just a style choice for me.
 
-Note that the hrefs here relate back to the slide ID's. This is purposeful, and integral. Please don't forget to do this!! As many slides as you have, you need a nav chunk. With this slider, that's non-negotiable.
+Note that the hrefs here relate back to the slide ID's. This is purposeful, and integral. Please don't forget to do this!! For each slide, you must make a nav chunk. With this slider, that's non-negotiable.
 
 ## The JS
 Now that you've got your HTML there, you can start implementing the JS. Crazy! How to define a new slider:
 
-    var testSlider = new mSlider;
+    var testSlider = new mSlider('#your-id', n);
 
-And you have yourself a brand new slider! Unfortunately, click event handling doesn't come built-in yet, so here's some click events you have to add:
+In this instantiation, the '#your-slider' is the id you gave the wrapper earlier. n here is the number of slides you have; remember, if that number is 4, this argument is optional.
 
-    // The nav
-    $(document).on('click', '.nav li a', testSlider.mRun.bind(testSlider));
-
-    // The arrows
-    $(document).on('click', '.slider-nav a.right-arrow', testSlider.mRun.bind(testSlider));
-    $(document).on('click', '.slider-nav a.left-arrow', testSlider.mRun.bind(testSlider));
-
-    // Play/pause
-    $(document).on('click', '.slider-nav a.play-pause', testSlider.playPause.bind(testSlider));
-
-Pretty simple, right? That's all there is to it! If you'd like the extra feature of buttons on one slide that go to the next (or whichever), you can add:
-
-    $(document).on('click', 'a.slide-toggle', testSlider.mRun.bind(testSlider));
-
-When you make the button, just like the nav pieces, you have to set the href to whatever slide you're aiming for, and shazam! You're set. Also, make sure it has the .slide-toggle class. Otherwise it won't do anything. Sad trombone.
-
-If you're curious about why .bind() has to be there, the simple reason is that otherwise, mRun/playPause's built-in this keyword would be equal to the event object, which is not the scope we want -- we need it to be reset to be scoped to the actual slider instance. That way, we can call other methods without a hitch.
+Pretty simple, right? That's all there is to it! If you'd like the extra feature of buttons on one slide that go to the next (or whichever), you can add them! When you make the button, just like the nav pieces, you have to set the href to whatever slide you're aiming for, and shazam! You're set. Also, make sure it has the .slide-toggle class. Otherwise it won't do anything. Sad trombone.
 
 ## The CSS
 The CSS provides extremely basic styling -- truly nothing exciting. It DOES, however, provide extremely necessary positioning, as well as some active/hover states. These can/will be added onto/tweaked, but this is enough to make the slider completely functional.
