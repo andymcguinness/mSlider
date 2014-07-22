@@ -69,14 +69,17 @@ Why do we have a mystery wrapped in a puzzle wrapped in an enigma? Well, we have
 
 Note that the hrefs here relate back to the slide ids. This is purposeful, and integral. Please don't forget to do this! For each slide, you _must_ make a nav chunk. With this slider, that's non-negotiable.
 
+###### Optional Buttons
+If you'd like the extra feature of buttons on one slide that go to the next (or whichever), you can add them! When you make the button, just like the nav pieces, you have to set the href to whatever slide you're aiming for, and shazam! You're set. Also, make sure it has the `.slide-toggle` class. Otherwise it won't do anything. Sad trombone.
+
 ## The JS
 Now that you've got your HTML there, you can start implementing the JS. Crazy! How to define a new slider:
 
     var testSlider = new mSlider('#your-id', n);
 
-In this instantiation, the `#your-slider` is the id you gave the wrapper earlier. `n` here is the number of slides you have; remember, if that number is 4, this argument is optional.
+In this instantiation, the `#your-id` is the id you gave the wrapper earlier. `n` here is the number of slides you have; remember, if that number is 4, this argument is optional.
 
-Pretty simple, right? That's all there is to it! If you'd like the extra feature of buttons on one slide that go to the next (or whichever), you can add them! When you make the button, just like the nav pieces, you have to set the href to whatever slide you're aiming for, and shazam! You're set. Also, make sure it has the `.slide-toggle` class. Otherwise it won't do anything. Sad trombone.
+Pretty simple, right? That's all there is to the JavaScript!
 
 ## The CSS
 The CSS provides extremely basic styling -- truly nothing exciting. It DOES, however, provide extremely necessary positioning, as well as some active/hover states. These can/will be added onto/tweaked, but this is enough to make the slider completely functional.
