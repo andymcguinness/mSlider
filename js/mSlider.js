@@ -69,6 +69,8 @@ mSlider.prototype.mRun = function(event, autoPlay) { // the brains of this thing
 
     /* The actual slider functionality -- whole lot goin' on here (not) */
     if (!this.$active.is(':animated') && this.$active.attr('id') != this.$target.attr('id')){ // if there is no item currently being animated && the target is not the currently active item
+        // Now that we know where we're going/coming from, and now that we've verified sliding SHOULD happen, let's trigger an event
+        this.$elem.trigger("slidingStart", [this.$target, this.$active]);
         if (this.$active.attr('id').replace('slide', '') < this.$target.attr('id').replace('slide','')){
             this.slideRight(this.$target, this.$active);
         } else {
@@ -94,17 +96,17 @@ mSlider.prototype.playPause = function (event) {
 mSlider.prototype.slideLeft = function($toItem, $fromItem) {
     $fromItem.animate({ left: '100%' }, 500, function(){ $(this).removeClass('active'); }); // Animate the active guy to the right, then, when done, remove the active class
     if ($toItem.hasClass('lazy')) { // At the same time, snap the target item offscreen to the left (can't assume it's already there), then animate it in; once that's done, add the active class                   
-        $toItem.css('background-image', 'url(' + $toItem.attr('data-original') + ')').css('left','-100%').animate({ left: '0' }, 500, function(){ $(this).addClass('active').removeClass('lazy'); }); // extra lifting if it's being lazy loaded
+        $toItem.css('background-image', 'url(' + $toItem.attr('data-original') + ')').css('left','-100%').animate({ left: '0' }, 500, function(){ $(this).addClass('active').removeClass('lazy'); }).queue( function() { $(this).parents('.mSlider').trigger("slidingComplete", [$toItem, $fromItem]); $(this).dequeue(); }); // extra lifting if it's being lazy loaded
     } else {
-        $toItem.css('left','-100%').animate({ left: '0' }, 500, function(){ $(this).addClass('active'); });
+        $toItem.css('left','-100%').animate({ left: '0' }, 500, function(){ $(this).addClass('active'); }).queue( function() { $(this).parents('.mSlider').trigger("slidingComplete", [$toItem, $fromItem]); $(this).dequeue(); });
     }
 };
 mSlider.prototype.slideRight = function($toItem, $fromItem) {
     $fromItem.animate({ left: '-100%' }, 500, function(){ $(this).removeClass('active').css('left', '100%'); }); // Animate the active dudebro to the left offscreen, then once that's done, remove the active class & reset it off the screen to the right
     if ($toItem.hasClass('lazy')){ // At the same time, animate the target to the left to be in the screen, then once that's done, add the class of active, which seals the pact
-        $toItem.css('background-image', 'url(' + $toItem.attr('data-original') + ')').animate({ left: '0' }, 500, function(){ $(this).addClass('active').removeClass('lazy'); }); // extra lifting if it's being lazy loaded
+        $toItem.css('background-image', 'url(' + $toItem.attr('data-original') + ')').animate({ left: '0' }, 500, function(){ $(this).addClass('active').removeClass('lazy'); }).queue( function() { $(this).parents('.mSlider').trigger("slidingComplete", [$toItem, $fromItem]); $(this).dequeue(); }); // extra lifting if it's being lazy loaded
     } else {
-        $toItem.animate({ left: '0' }, 500, function(){ $(this).addClass('active'); });
+        $toItem.animate({ left: '0' }, 500, function(){ $(this).addClass('active'); }).queue( function() { $(this).parents('.mSlider').trigger("slidingComplete", [$toItem, $fromItem]); $(this).dequeue(); });
     }
 };
 mSlider.prototype.startTimer = function() {
