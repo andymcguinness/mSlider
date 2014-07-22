@@ -5,7 +5,7 @@ This documentation should help explain how to use & abuse the mSlider. Mostly th
 The slider is based around sliding absolutely-positioned divs around. It uses jQuery's `.animate()`, which is not the most efficient method, but it allowed me access to a callback which I sorely needed at the time. Given time & need, I might rewrite this to use Modernizr, CSS3 transitions, and some alternate method for callbacks.
 
 ## The HTML
-The HTML required for this slider is slightly heavy, but that's because the slider doesn't provide it for you. If you set up the slider correctly, everything should fire. You can then tweak and change the normal/active/hover/etc. styles as you need.
+The HTML required for this slider is slightly heavy, but that's because the slider doesn't provide it for you. If you set up the slider correctly, everything should fire. You can add content within the slides to your heart's content -- the `.slide` div is what gets moved, so all your content will go with it.
 
 ###### The Wrapper
 First, you have the wrapper of the slider itself:
